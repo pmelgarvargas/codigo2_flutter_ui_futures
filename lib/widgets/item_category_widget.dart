@@ -2,7 +2,16 @@
 import 'package:flutter/material.dart';
 
 class ItemCategoryWidget extends StatelessWidget {
-  const ItemCategoryWidget({Key? key}) : super(key: key);
+
+  int colorr;
+  String txt;
+  Icon icono;
+
+  ItemCategoryWidget({
+    required this.colorr,
+    required this.txt,
+    required this. icono,
+});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +21,7 @@ class ItemCategoryWidget extends StatelessWidget {
       ),
       margin: EdgeInsets.only(right: 12.0),
       decoration: BoxDecoration(
-        color: Color(0xff5D6DFF),
+        color: Color(colorr),
         borderRadius: BorderRadius.circular(12.0),
       ),
       child: Row(
@@ -25,7 +34,7 @@ class ItemCategoryWidget extends StatelessWidget {
             width: 6.0,
           ),
           Text(
-            "Art & Cultures",
+            txt,
             style: TextStyle(
                 color: Colors.white,
                 fontSize: 14.0

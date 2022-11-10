@@ -61,7 +61,7 @@ class _InitPageState extends State<InitPage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const Text(
-                            "Hi Elvis,",
+                            "Hi Pedro,",
                             style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
@@ -195,6 +195,14 @@ class _InitPageState extends State<InitPage> {
               child: Column(
                 children: [
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.circle, size: 10.0,color: Colors.grey,),
+                      Icon(Icons.circle,size: 15.0,color: Colors.blue,),
+                      Icon(Icons.circle,size: 10.0,color: Colors.grey,),
+                    ],
+                  ),
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
@@ -219,41 +227,8 @@ class _InitPageState extends State<InitPage> {
                     height: 14.0,
                   ),
 
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    physics: const BouncingScrollPhysics(),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      // children: List.generate(
-                      //   listData.length,
-                      //   (index) => ItemSliderWidget(
-                      //     onMandarina: () {
-                      //       Navigator.push(
-                      //           context,
-                      //           MaterialPageRoute(
-                      //               builder: (context) => DetailPage()));
-                      //     },
-                      //   ),
-                      // ),
-                      children: listData
-                          .map(
-                            (e) => ItemSliderWidget(
-                              place: e,
-                              onMandarina: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => DetailPage(
-                                      data: e,
-                                    ),
-                                  ),
-                                );
-                              },
-                            ),
-                          )
-                          .toList(),
-                    ),
-                  ),
+                  ////
+
 
                   FutureBuilder(
                     future: data.fetchData(),
@@ -322,11 +297,30 @@ class _InitPageState extends State<InitPage> {
                     physics: const BouncingScrollPhysics(),
                     child: Row(
                       children: [
-                        ItemCategoryWidget(),
-                        ItemCategoryWidget(),
-                        ItemCategoryWidget(),
-                        ItemCategoryWidget(),
-                        ItemCategoryWidget(),
+                        ItemCategoryWidget(
+                          txt: "Art & Cultures",
+                          colorr: 0xff5D6DFF,
+                          icono: Icon(
+                            Icons.ac_unit_outlined,
+                            color: Colors.white,
+                          ),
+                        ),
+                        ItemCategoryWidget(
+                          txt: "Adventure",
+                          colorr: 0xff33D4F9,
+                          icono: Icon(
+                            Icons.flag,
+                            color: Colors.white,
+                          ),
+                        ),
+                        ItemCategoryWidget(
+                          txt: "Festival",
+                          colorr: 0xff2B89E0,
+                          icono: Icon(
+                            Icons.attractions,
+                            color: Colors.white,
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -347,18 +341,40 @@ class _InitPageState extends State<InitPage> {
               ),
             ),
 
-            ElevatedButton(
-              onPressed: ()  async {
+            Padding(
+              padding: const EdgeInsets.all(18.0),
+              child: ElevatedButton(
 
-                SharedPreferences prefs = await SharedPreferences.getInstance();
-                String name = prefs.getString("name") ?? "-";
-                int n = prefs.getInt("matasquita") ?? 0;
-                print(name);
-                print(n);
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                  ),
+                onPressed: ()  async {
 
-              },
-              child: Text(
-                "Data",
+                  SharedPreferences prefs = await SharedPreferences.getInstance();
+                  String name = prefs.getString("name") ?? "-";
+                  int n = prefs.getInt("matasquita") ?? 0;
+                  print(name);
+                  print(n);
+
+                },
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.home, color: Colors.blue, size: 40.0,),
+                    SizedBox(width: 25.0,),
+                    Icon(Icons.location_on,color: Colors.grey,size: 40.0,),
+                    SizedBox(width: 25.0,),
+                    Icon(Icons.camera_outlined,color: Colors.grey,size: 40.0,),
+                    SizedBox(width: 25.0,),
+                    Icon(Icons.heart_broken_rounded,color: Colors.grey,size: 40.0,),
+                    SizedBox(width: 25.0,),
+                    Icon(Icons.person,color: Colors.grey,size: 40.0,),
+                  ],
+                )
               ),
             ),
           ],

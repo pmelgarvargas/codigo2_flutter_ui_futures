@@ -154,6 +154,16 @@ class DetailPage extends StatelessWidget {
                           ),
                         ],
                       ),
+                      Row(
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(left: 35.0),
+                            color: Colors.blue,
+                            height: 2.0,
+                            width: 50.0,
+                          ),
+                        ],
+                      ),
                       SizedBox(
                         height: 16.0,
                       ),
